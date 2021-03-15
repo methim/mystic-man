@@ -20,6 +20,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
     scene.setBackgroundColor(15)
     tiles.setTilemap(tilemap`level2`)
 })
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    game.over(false, effects.splatter)
+})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite,
@@ -27,6 +30,15 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     100,
     true
     )
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
+    mySprite.setPosition(0, 113)
+    scene.setBackgroundColor(15)
+    tiles.setTilemap(tilemap`level5`)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
+    scene.setBackgroundColor(0)
+    tiles.setTilemap(tilemap`level7`)
 })
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
