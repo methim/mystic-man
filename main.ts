@@ -1,5 +1,12 @@
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
+    scene.setBackgroundColor(15)
+    tiles.setTilemap(tilemap`level2`)
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setVelocity(0, -200)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
+    statusbar.value += -1
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -9,6 +16,10 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
+    scene.setBackgroundColor(15)
+    tiles.setTilemap(tilemap`level2`)
+})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite,
@@ -17,6 +28,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -38,10 +50,14 @@ mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
+mySprite.setPosition(22, 110)
 scene.setBackgroundColor(9)
 tiles.setTilemap(tilemap`level1`)
 scene.cameraFollowSprite(mySprite)
 controller.moveSprite(mySprite, 100, 0)
+statusbar = statusbars.create(20, 4, StatusBarKind.Health)
+statusbar.setLabel("HP")
+statusbar.attachToSprite(mySprite)
 forever(function () {
     mySprite.ay = 500
 })
