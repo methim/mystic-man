@@ -175,15 +175,15 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
         . . . 2 2 9 9 9 9 2 2 . . . . . 
         . . . 2 2 9 9 9 9 2 2 . . . . . 
         . . . 2 2 2 2 2 2 2 2 . . . . . 
-        . . . . 5 2 2 2 2 5 . . . . . . 
-        . . . 5 5 2 2 2 2 5 5 . . . . . 
-        . . 5 5 5 2 2 2 2 5 5 5 . . . . 
-        . . . . . 2 2 2 2 . . . . . . . 
-        . . . . . 2 . . 2 . . . . . . . 
-        . . . . . 2 . . 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Player)
-    mySprite3.follow(mySprite, 50)
+    mySprite3.follow(mySprite, 10)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
