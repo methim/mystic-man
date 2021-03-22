@@ -165,25 +165,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
     100,
     true
     )
-    mySprite3 = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . 2 . . . . . . 2 . . . . . 
-        . . . 2 . . . . . . 2 . . . . . 
-        . . . 2 2 2 2 2 2 2 2 . . . . . 
-        . . . 2 2 2 2 2 2 2 2 . . . . . 
-        . . . 2 2 9 9 9 9 2 2 . . . . . 
-        . . . 2 2 9 9 9 9 2 2 . . . . . 
-        . . . 2 2 2 2 2 2 2 2 . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-    mySprite3.follow(mySprite, 10)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -192,6 +173,9 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     100,
     true
     )
+})
+statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
+    mySprite3.destroy(effects.fire, 500)
 })
 statusbars.onZero(StatusBarKind.Health, function (status) {
     game.over(false, effects.splatter)
@@ -214,6 +198,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, l
     tiles.setTilemap(tilemap`level7`)
     mySprite.setPosition(19, 93)
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    statusbar3.value += -1
+})
+let statusbar3: StatusBarSprite = null
 let mySprite3: Sprite = null
 let statusbar2: StatusBarSprite = null
 let mySprite2: Sprite = null
@@ -248,6 +236,29 @@ controller.moveSprite(mySprite, 100, 0)
 statusbar = statusbars.create(20, 4, StatusBarKind.Health)
 statusbar.setLabel("HP")
 statusbar.attachToSprite(mySprite)
+game.onUpdateInterval(5000, function () {
+    mySprite3 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . 2 . . . 2 . . . . . . 
+        . . . . . 2 2 2 2 2 . . . . . . 
+        . . . . . 2 9 2 9 2 . . . . . . 
+        . . . . . 2 2 2 2 2 . . . . . . 
+        . . . . . 2 f f f 2 . . . . . . 
+        . . . . 2 2 2 2 2 2 2 . . . . . 
+        . . . 2 5 5 2 2 2 5 5 2 . . . . 
+        . . 2 5 5 5 2 2 2 5 5 5 2 . . . 
+        . 2 5 5 5 5 2 2 2 5 5 5 5 2 . . 
+        . . 5 . 5 . 2 2 2 . 5 . 5 . . . 
+        . . . . . . 2 2 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    statusbar3 = statusbars.create(10, 4, StatusBarKind.EnemyHealth)
+    statusbar3.attachToSprite(mySprite3)
+    mySprite3.follow(mySprite)
+})
 forever(function () {
     mySprite.ay = 500
 })
