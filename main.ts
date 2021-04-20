@@ -33,18 +33,18 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
-        . . . . 9 9 9 6 9 9 9 6 6 6 6 . 
-        . . . 9 9 9 6 9 9 9 9 9 6 6 6 6 
-        . . 9 9 9 6 9 9 9 9 9 6 6 6 . . 
-        . 9 9 9 6 9 9 9 9 9 9 9 6 6 6 . 
-        9 9 9 6 9 9 9 9 9 9 9 9 6 6 . . 
-        9 9 6 9 9 9 9 9 9 9 9 6 6 . . . 
-        9 6 9 9 9 9 9 9 9 9 9 9 6 6 . . 
-        6 9 9 9 9 9 9 9 9 9 9 9 6 6 6 . 
-        . 9 9 9 9 9 9 9 9 9 6 6 6 6 6 . 
-        . . 9 9 9 9 9 9 9 6 9 9 6 . . . 
-        . . . 9 9 9 9 9 6 9 9 9 6 . . . 
-        . . . . 9 9 9 6 9 9 9 6 6 6 . . 
+        . . . . 9 9 9 9 9 9 9 9 9 9 9 . 
+        . . . 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        . . 9 9 9 9 9 9 9 9 9 9 9 9 . . 
+        . 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 . . 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 . . . 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 . . 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
+        . 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 
+        . . 9 9 9 9 9 9 9 9 9 9 9 . . . 
+        . . . 9 9 9 9 9 9 9 9 9 9 . . . 
+        . . . . 9 9 9 9 9 9 9 9 9 9 . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -80,6 +80,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
     game.showLongText("you:...", DialogLayout.Bottom)
     game.showLongText("???:hmm well i guess i will start first.", DialogLayout.Bottom)
     game.showLongText("you:...", DialogLayout.Bottom)
+    game.showLongText("??? well um on my way home with my cool new mech suit", DialogLayout.Bottom)
+    game.showLongText("then i got teleported to a weird place i had to survive each one.", DialogLayout.Bottom)
     game.showLongText("", DialogLayout.Bottom)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
